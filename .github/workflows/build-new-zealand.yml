@@ -77,7 +77,7 @@ jobs:
       - name: Check if map should be created
         id: map_exists
         run: |
-          if (wget -q --spider https://github.com/manujedi/BSC300-Maps/releases/latest/download/${{ github.workflow }}-${{ matrix.maps.name }}-${{ matrix.variant.zip }}.zip); then
+          if (wget -q --spider https://github.com/cole-maguire/BSC300-Maps/releases/latest/download/${{ github.workflow }}-${{ matrix.maps.name }}-${{ matrix.variant.zip }}.zip); then
             echo "Map exists"
             echo "create_map=false" >> "$GITHUB_OUTPUT"
           else

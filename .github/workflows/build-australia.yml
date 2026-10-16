@@ -1,12 +1,12 @@
-name: norway
+name: australia
 
 env:
-  countrycode: NO
+  countrycode: AU
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "56 8 * * *"
+    - cron: "39 7 * * *"
   workflow_run:
     workflows: [start map builds]
     types:
@@ -21,12 +21,7 @@ jobs:
       matrix:
         maps:
           [
-            {name: nord-norge, url: https://download.geofabrik.de/europe/norway/nord-norge-latest.osm.pbf, state: "0100"},
-            {name: ostlandet, url: https://download.geofabrik.de/europe/norway/ostlandet-latest.osm.pbf, state: "0200"},
-            {name: sorlandet, url: https://download.geofabrik.de/europe/norway/sorlandet-latest.osm.pbf, state: "0300"},
-            {name: svalbard-janmayen, url: https://download.geofabrik.de/europe/norway/svalbard-janmayen-latest.osm.pbf, state: "0400"},
-            {name: trondelag, url: https://download.geofabrik.de/europe/norway/trondelag-latest.osm.pbf, state: "0500"},
-            {name: vestlandet, url: https://download.geofabrik.de/europe/norway/vestlandet-latest.osm.pbf, state: "0600"},
+            {name: new-zealand, url: https://download.geofabrik.de/australia-oceania/australia-latest.osm.pbf, state: "0000"},
           ]
 
         variant:
@@ -82,7 +77,7 @@ jobs:
       - name: Check if map should be created
         id: map_exists
         run: |
-          if (wget -q --spider https://github.com/manujedi/BSC300-Maps/releases/latest/download/${{ github.workflow }}-${{ matrix.maps.name }}-${{ matrix.variant.zip }}.zip); then
+          if (wget -q --spider https://github.com/cole-maguire/BSC300-Maps/releases/latest/download/${{ github.workflow }}-${{ matrix.maps.name }}-${{ matrix.variant.zip }}.zip); then
             echo "Map exists"
             echo "create_map=false" >> "$GITHUB_OUTPUT"
           else
