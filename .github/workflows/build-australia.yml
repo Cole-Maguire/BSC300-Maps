@@ -21,7 +21,7 @@ jobs:
       matrix:
         maps:
           [
-            {name: new-zealand, url: https://download.geofabrik.de/australia-oceania/australia-latest.osm.pbf, state: "0000"},
+            {name: australia, url: https://download.geofabrik.de/australia-oceania/australia-latest.osm.pbf, state: "0000"},
           ]
 
         variant:
